@@ -57,17 +57,17 @@ int main(){
 		return 0;
 	}
 	if(flag==1){
-		cx=a[3]-3*m;
+		cx=a[3]-3*m1;
 	}
 	if(flag==2){
 		m1=m2;
 		c1=c2;
-		cx=a[1]-m;
+		cx=a[1]-m2;
 	}
 	if(flag==3){
 		m1=m3;
 		c1=c3;
-		cx=a[2]-2*m;
+		cx=a[2]-2*m3;
 	}
 	for(i=5;i<=n;i++){
 		cin>>a[i];

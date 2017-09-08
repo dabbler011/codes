@@ -9,20 +9,28 @@ int main()
 		int n;
 		cin>>n;
 		int i;
-		long long int a[n];
+		long long int a[n],max[n],m=0;
 		for(i=0;i<n;i++){
 			cin>>a[i];
-			if(i>=2){
-				a[i]+=a[i-2];
+			max[i]=a[i];
+			if(i-2>=0){
+				max[i]+=max[m];
+				if(a[m]<a[m+1]){
+					m+=1;
+				}
 			}
 		}
 		cout<<"Case "<<te-t<<": ";
-		if(a[n-1]>a[n-2]){
-			cout<<a[n-1]<<endl;
+		if(n==0){
+			cout<<"0";
+		}
+		else if(n==1){
+			cout<<a[0];
 		}
 		else{
-			cout<<a[n-2]<<endl;
+			cout<<max(a[m],a[n-1],a[n-2]);
 		}
+		cout<<endl;
 	}
 	return 0;
 }
