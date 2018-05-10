@@ -5,30 +5,25 @@ int main () {
 	int t;
 	cin>>t;
 	while (t--) {
-		int a,b,count=0,ans=0;
+		int a,b,i,j;
 		cin>>a>>b;
+		int mat[a+1][b+1];
 		string s1,s2;
 		cin>>s1>>s2;
-		if (a<b) {
-			int c;
-			string t;
-			c=a;
-			a=b;
-			b=c;
-			t=s1;
-			s1=s2;
-			s2=t;
-		}
-		int dp[a][3];
-		memset(dp,0,sizeof(dp));
-		for (int i=0;s1[i]!='\0';i++) {
-			for (int j=0;j<3;j++) {
-				if (j==0) {
-					
+		for (i=0;i<=a;i++) {
+			for (j=0;j<=b;j++) {
+				if (i==0) {
+					mat[i][j]=j;
+				} else if (j==0) {
+					mat[i][j]=i;
+				} else if (s1[i-1]==s2[j-1]) {
+					mat[i][j]=mat[i-1][j-1];
+				} else {
+					mat[i][j]=1+min(min(mat[i-1][j-1],mat[i][j-1]),mat[i-1][j]);
 				}
 			}
 		}
-		cout<<ans<<endl;
+		cout<<mat[a][b]<<endl;
 	}
 	return 0;
 }
